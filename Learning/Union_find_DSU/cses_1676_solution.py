@@ -16,7 +16,7 @@ components = n
 max_size = 1
 
 def union(x,y):
-    global components # Declare components as global
+    global components
     global max_size
     x = find(x)
     y = find(y)
@@ -32,3 +32,5 @@ def union(x,y):
 for edge in edges:
     union(edge[0], edge[1])
     print(components, max_size)
+
+#https://cses.fi/problemset/task/1676/
