@@ -25,21 +25,19 @@ class Solution:
 
         max_heap = [(-safety[0][0], 0, 0)]
         visited = [[False] * n for _ in range(n)]
+        visited[0][0] = True
 
         while max_heap:
             sf, r, c = heapq.heappop(max_heap)
             sf = -sf
-
-            if visited[r][c]:
-                continue
-
-            visited[r][c] = True
 
             if (r == n - 1) and (c == n - 1):
                 return sf
 
             for dr, dc in dirs:
                 nr, nc = r + dr, c + dc
+
                 if (0 <= nr < n) and (0 <= nc < n) and not visited[nr][nc]:
+                    visited[nr][nc] = True
                     new_sf = min(sf, safety[nr][nc])
                     heapq.heappush(max_heap, (-new_sf, nr, nc))
